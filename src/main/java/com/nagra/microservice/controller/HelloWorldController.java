@@ -21,7 +21,7 @@ import java.util.List;
 @RestController
 public class HelloWorldController
 {
-  // private final Logger logger = LoggerFactory.getLogger(HelloWorldController.class);
+   private final Logger logger = LoggerFactory.getLogger(HelloWorldController.class);
     private final String API_URL = "https://rickandmortyapi.com/api/character/";
     RestTemplate restTemplate = new RestTemplate();
     /*@GetMapping("/characters/{id}")
@@ -49,6 +49,7 @@ public List<Character> getCharacter(@RequestParam String name) {
 
     List<Character> answer = new ArrayList<>();
     String url = "https://rickandmortyapi.com/api/character/?name="+ name;
+   // logger.info("Fetching character(s) from: {}", url);
     ResponseEntity<CharacterApiResponse> response = restTemplate.getForEntity(url, CharacterApiResponse.class);
     CharacterApiResponse characterApiResponse = response.getBody();
 
@@ -56,20 +57,23 @@ public List<Character> getCharacter(@RequestParam String name) {
         characterApiResponse.getResults().forEach(characterResult -> {
             answer.add(characterResult.toCharacter());
         });
+        logger.info("Character(s) retrieved successfully.  Name: {}",  name);
+        logger.info(" Count: {}",answer.size());
         return answer;
     } else {
+        logger.warn("No character(s) found for name: {}",name);
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Character not found");
     }
 }
-    @Bean
-    public CommonsRequestLoggingFilter requestLoggingFilter() {
-        CommonsRequestLoggingFilter loggingFilter = new CommonsRequestLoggingFilter();
-        loggingFilter.setIncludeClientInfo(true);
-        loggingFilter.setIncludeQueryString(true);
-        loggingFilter.setIncludePayload(true);
-        loggingFilter.setIncludeHeaders(false);
-        return loggingFilter;
-    }
+//    @Bean
+//    public CommonsRequestLoggingFilter requestLoggingFilter() {
+//        CommonsRequestLoggingFilter loggingFilter = new CommonsRequestLoggingFilter();
+//        loggingFilter.setIncludeClientInfo(true);
+//        loggingFilter.setIncludeQueryString(true);
+//        loggingFilter.setIncludePayload(true);
+//        loggingFilter.setIncludeHeaders(false);
+//        return loggingFilter;
+//    }
 
 
 
