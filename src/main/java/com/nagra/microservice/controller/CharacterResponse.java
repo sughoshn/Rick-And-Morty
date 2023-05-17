@@ -1,12 +1,17 @@
 package com.nagra.microservice.controller;
 
+import java.util.List;
+
 public class CharacterResponse {
     private String name;
-    private String status;
-    private String species;
-    private String gender;
+   // private String status;
+   // private String species;
+  //  private String gender;
     private String image;
-
+    private List<CharacterApiResponse.CharacterResult> results;
+    public List<CharacterApiResponse.CharacterResult> getResults() {
+        return results;
+    }
     public String getName() {
         return name;
     }
@@ -15,15 +20,15 @@ public class CharacterResponse {
         this.name = name;
     }
 
-    public String getStatus() {
-        return status;
-    }
+  //  public String getStatus() {
+  //      return status;
+  //  }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
+   // public void setStatus(String status) {
+     //   this.status = status;
+    //}
 
-    public String getSpecies() {
+   /* public String getSpecies() {
         return species;
     }
 
@@ -39,6 +44,8 @@ public class CharacterResponse {
         this.gender = gender;
     }
 
+    */
+
     public String getImage() {
         return image;
     }
@@ -47,14 +54,15 @@ public class CharacterResponse {
         this.image = image;
     }
 
-    public CharacterResponse() {
-    }
+
+//    public CharacterResponse() {
+//    }
 
     public CharacterResponse(String name, String status, String species, String gender,String image) {
         this.name = name;
-        this.status = status;
-        this.species = species;
-        this.gender = gender;
+      //  this.status = status;
+       // this.species = species;
+       // this.gender = gender;
         this.image=image;
     }
 }

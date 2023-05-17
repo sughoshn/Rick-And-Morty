@@ -1,5 +1,7 @@
 package com.nagra.microservice.controller;
 
+import java.util.List;
+
 public class Character {
     private String name;
 
@@ -39,5 +41,6 @@ public class Character {
         this.name = name;
         this.image=image;
     }
+
 }
 

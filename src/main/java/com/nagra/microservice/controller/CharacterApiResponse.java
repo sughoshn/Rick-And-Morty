@@ -154,6 +154,7 @@ public class CharacterApiResponse {
         }
     }
 
+
     public static class Location {
         private String name;
         private String url;
@@ -175,3 +176,4 @@ public class CharacterApiResponse {
         }
     }
 }
+
