@@ -62,7 +62,9 @@ public List<Character> getCharacter(@RequestParam String name) {
         return answer;
     } else {
         logger.warn("No character(s) found for name: {}",name);
+        logger.info("Character(s) not found .  Name: {}",  name);
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Character not found");
+
     }
 }
 //    @Bean
